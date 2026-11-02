@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fiesta de Fin de Año 2026 – Grupo Agroenergía</title>
+  <meta name="description" content="Sábado 12 de diciembre, 22:00 h – Celebrity Eventos, Toay. Confirmá tu asistencia.">
+  <meta property="og:title" content="Fiesta de Fin de Año 2026 – Grupo Agroenergía">
+  <meta property="og:description" content="Sábado 12 de diciembre, 22:00 h – Celebrity Eventos, Toay. Confirmá tu asistencia hasta el 27/11.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/image.jpg">
+  <meta property="og:url" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/">
+  <meta name="theme-color" content="#050B1F">
+  <style>
+    /* ===== COLORES ===== */
+    :root {
+      color-scheme: dark;
+      --fondo: #050B1F;
+      --tarjeta: #0D1A3D;
+      --texto: #ffffff;
+      --suave: #A9BCE6;
+      --principal: #ffffff;
+      --boton: #3D8BFF;
+      --boton-texto: #ffffff;
+      --borde: #2A3F73;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--fondo); color: var(--texto);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.45;
+    }
+    .contenedor { max-width: 480px; margin: 0 auto; padding: 16px 16px 40px; }
+    .grafica img { width: 100%; height: auto; display: block; border-radius: 12px; }
+    .evento {
+      background: var(--tarjeta); border-radius: 12px; padding: 16px; margin-top: 16px;
+      display: grid; gap: 10px;
+    }
+    .fila { display: flex; gap: 10px; }
+    .fila > span:first-child { color: var(--suave); min-width: 64px; font-size: 14px; }
+    .fila > span:last-child { font-weight: 600; }
+    .direccion { font-weight: 400; font-size: 14px; }
+    .mapa {
+      display: block; text-align: center; margin-top: 6px; padding: 10px; border: 1px solid var(--borde);
+      border-radius: 8px; color: var(--principal); font-weight: 600; text-decoration: none;
+    }
+    form, .gracias {
+      background: var(--tarjeta); border-radius: 12px; padding: 20px 16px; margin-top: 16px;
+    }
+    h2 { font-size: 20px; margin: 0 0 4px; color: var(--principal); }
+    .ayuda { color: var(--suave); font-size: 14px; margin: 0 0 18px; }
+    label.titulo { display: block; font-weight: 600; margin: 18px 0 8px; }
+    input[type=text], select {
+      width: 100%; padding: 12px; font-size: 16px; border: 1px solid var(--borde);
+      border-radius: 8px; background: #08122E; color: var(--texto);
+    }
+    .opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .opciones label {
+      position: relative; border: 1px solid var(--borde); border-radius: 8px; padding: 12px;
+      text-align: center; cursor: pointer; font-weight: 600;
+    }
+    .opciones input { position: absolute; opacity: 0; pointer-events: none; }
+    .opciones label.activa { background: var(--boton); border-color: var(--boton); color: var(--boton-texto); }
+    #bloqueDetalle, #bloqueSector { display: none; }
+    button {
+      width: 100%; margin-top: 24px; padding: 14px; font-size: 16px; font-weight: 700;
+      border: 0; border-radius: 8px; background: var(--boton); color: var(--boton-texto); cursor: pointer;
+    }
+    button:disabled { opacity: .6; cursor: default; }
+    .error { color: #FF8A80; font-size: 14px; margin-top: 12px; min-height: 1em; }
+    .gracias { display: none; text-align: center; }
+    .gracias h2 { margin-bottom: 8px; }
+    .pie { text-align: center; color: var(--suave); font-size: 12px; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+
+    <!-- ===== TARJETA GRÁFICA ===== -->
+    <div class="grafica">
+      <img src="image.jpg" width="1081" height="1348" alt="Fiesta de fin de año. Chau 2026. Lo vivimos juntos, ¡lo festejamos juntos! Grupo Agroenergía">
+    </div>
+
+    <!-- ===== DATOS DEL EVENTO ===== -->
+    <div class="evento">
+      <div class="fila"><span>Día</span><span>Sábado 12 de diciembre</span></div>
+      <div class="fila"><span>Hora</span><span>22:00 h</span></div>
+      <div class="fila"><span>Lugar</span><span>Celebrity Eventos<br><span class="direccion">Av. Pres. Juan Domingo Perón 5817, Toay, La Pampa</span></span></div>
+      <a class="mapa" href="https://share.google/qVbl0W0zK35eOzRsh" target="_blank" rel="noopener">📍 Ver ubicación en el mapa</a>
+    </div>
+
+    <!-- ===== FORMULARIO ===== -->
+    <form id="formulario" novalidate>
+      <h2>Confirmá tu asistencia</h2>
+      <p class="ayuda">Confirmá hasta el viernes 27 de noviembre.</p>
+
+      <label class="titulo" for="nombre">Nombre y apellido</label>
+      <input type="text" id="nombre" autocomplete="name" required>
+
+      <label class="titulo">¿Vas a asistir?</label>
+      <div class="opciones">
+        <label><input type="radio" name="asiste" value="Sí"><span>Sí, voy</span></label>
+        <label><input type="radio" name="asiste" value="No"><span>No puedo</span></label>
+      </div>
+
+      <label class="titulo">¿Sos empleado/a de Grupo Agroenergía?</label>
+      <div class="opciones">
+        <label><input type="radio" name="empleado" value="Sí"><span>Sí</span></label>
+        <label><input type="radio" name="empleado" value="No"><span>No</span></label>
+      </div>
+
+      <div id="bloqueSector">
+        <label class="titulo" for="sector">¿En qué estación o sector trabajás?</label>
+        <select id="sector">
+          <option value="">Elegí una opción</option>
+          <option value="Puma Energy">Puma Energy</option>
+          <option value="Axion Energy">Axion Energy</option>
+          <option value="Shell">Shell</option>
+          <option value="Barón Agroenergía">Barón Agroenergía</option>
+          <option value="Caleufú Agroenergía">Caleufú Agroenergía</option>
+          <option value="Trenel Agroenergía">Trenel Agroenergía</option>
+          <option value="Logística">Logística</option>
+          <option value="Administración">Administración</option>
+          <option value="Havanna">Havanna</option>
+          <option value="Spot">Spot</option>
+          <option value="Shell Select">Shell Select</option>
+          <option value="Mantenimiento">Mantenimiento</option>
+        </select>
+      </div>
+
+      <label class="titulo" for="restriccion">¿Tenés alguna restricción alimentaria?</label>
+      <select id="restriccion">
+        <option value="Ninguna">Ninguna</option>
+        <option value="Vegetariano">Vegetariano</option>
+        <option value="Vegano">Vegano</option>
+        <option value="Celíaco (sin TACC)">Celíaco (sin TACC)</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <div id="bloqueDetalle">
+        <label class="titulo" for="detalle">Contanos cuál</label>
+        <input type="text" id="detalle">
+      </div>
+
+      <button type="submit" id="enviar">Enviar confirmación</button>
+      <div class="error" id="error"></div>
+    </form>
+
+    <div class="gracias" id="gracias">
+      <h2 id="graciasTitulo">¡Gracias!</h2>
+      <p id="graciasTexto"></p>
+    </div>
+
+    <p class="pie">Grupo Agroenergía</p>
+  </div>
+
+  <script>
+    // Dirección del script que guarda en la planilla
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyjlrJgyCej1O6SwqNcmFYHKYi33ihnbrCd9MXvi_XooHy9vKl4ohcW7Xe8iStgmIcHnw/exec';
+
+    const radios = document.querySelectorAll('input[name=asiste]');
+    const restriccion = document.getElementById('restriccion');
+    const bloqueDetalle = document.getElementById('bloqueDetalle');
+
+    radios.forEach(r => r.addEventListener('change', () => {
+      radios.forEach(x => x.parentElement.classList.toggle('activa', x.checked));
+    }));
+    const radiosEmp = document.querySelectorAll('input[name=empleado]');
+    const bloqueSector = document.getElementById('bloqueSector');
+    const sector = document.getElementById('sector');
+    radiosEmp.forEach(r => r.addEventListener('change', () => {
+      radiosEmp.forEach(x => x.parentElement.classList.toggle('activa', x.checked));
+      bloqueSector.style.display = document.querySelector('input[name=empleado]:checked').value === 'Sí' ? 'block' : 'none';
+    }));
+
+    restriccion.addEventListener('change', () => {
+      bloqueDetalle.style.display = restriccion.value === 'Otra' ? 'block' : 'none';
+    });
+
+    async function enviar(datos) {
+      const cuerpo = JSON.stringify(datos);
+      try {
+        const res = await fetch(ENDPOINT, { method: 'POST', body: cuerpo });
+        const json = await res.json();
+        if (!json.ok) throw new Error(json.error || 'Error');
+        return;
+      } catch (e) {
+        // Respaldo: envío sin leer la respuesta (si se repite, el script actualiza la misma fila)
+        await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: cuerpo });
+      }
+    }
+
+    document.getElementById('formulario').addEventListener('submit', async e => {
+      e.preventDefault();
+      const error = document.getElementById('error');
+      const boton = document.getElementById('enviar');
+      const nombre = document.getElementById('nombre').value.trim();
+      const marcado = document.querySelector('input[name=asiste]:checked');
+      const detalle = document.getElementById('detalle').value.trim();
+
+      error.textContent = '';
+      if (!nombre) { error.textContent = 'Escribí tu nombre y apellido.'; return; }
+      if (!marcado) { error.textContent = 'Indicá si vas a asistir.'; return; }
+      const emp = document.querySelector('input[name=empleado]:checked');
+      if (!emp) { error.textContent = 'Indicá si sos empleado/a.'; return; }
+      if (emp.value === 'Sí' && !sector.value) { error.textContent = 'Elegí tu estación o sector.'; return; }
+      if (marcado.value === 'Sí' && restriccion.value === 'Otra' && !detalle) {
+        error.textContent = 'Contanos cuál es tu restricción.'; return;
+      }
+
+      const datos = { nombre: nombre, asiste: marcado.value, restriccion: restriccion.value, detalle: detalle, empleado: emp.value, sector: emp.value === 'Sí' ? sector.value : '' };
+
+      boton.disabled = true;
+      boton.textContent = 'Enviando…';
+      try {
+        await enviar(datos);
+        document.getElementById('formulario').style.display = 'none';
+        document.getElementById('gracias').style.display = 'block';
+        document.getElementById('graciasTitulo').textContent =
+          datos.asiste === 'Sí' ? '¡Te esperamos, ' + nombre.split(' ')[0] + '!' : '¡Gracias por avisar!';
+        document.getElementById('graciasTexto').textContent =
+          datos.asiste === 'Sí' ? 'Tu confirmación quedó registrada.' : 'Te vamos a extrañar.';
+      } catch (err) {
+        boton.disabled = false;
+        boton.textContent = 'Enviar confirmación';
+        error.textContent = 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
+      }
+    });
+  </script>
+</body>
+</html>

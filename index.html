@@ -6,7 +6,7 @@
   <title>Fiesta de Fin de Año 2026 – Grupo Agroenergía</title>
   <meta name="description" content="Sábado 12 de diciembre, 22:00 h – Celebrity Eventos, Toay. Confirmá tu asistencia.">
   <meta property="og:title" content="Fiesta de Fin de Año 2026 – Grupo Agroenergía">
-  <meta property="og:description" content="Sábado 12 de diciembre, 22:00 h – Celebrity Eventos, Toay. Confirmá tu asistencia hasta el 27/11.">
+  <meta property="og:description" content="Sábado 12 de diciembre, 22:00 h – Celebrity Eventos, Toay. Confirmá tu asistencia hasta el 25/11.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/image.jpg">
   <meta property="og:url" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/">
@@ -61,7 +61,7 @@
     }
     .opciones input { position: absolute; opacity: 0; pointer-events: none; }
     .opciones label.activa { background: var(--boton); border-color: var(--boton); color: var(--boton-texto); }
-    #bloqueDetalle, #bloqueSector { display: none; }
+    #bloqueDetalle, #bloqueDni { display: none; }
     button {
       width: 100%; margin-top: 24px; padding: 14px; font-size: 16px; font-weight: 700;
       border: 0; border-radius: 8px; background: var(--boton); color: var(--boton-texto); cursor: pointer;
@@ -92,7 +92,7 @@
     <!-- ===== FORMULARIO ===== -->
     <form id="formulario" novalidate>
       <h2>Confirmá tu asistencia</h2>
-      <p class="ayuda">Confirmá hasta el viernes 27 de noviembre.</p>
+      <p class="ayuda">Confirmá hasta el miércoles 25 de noviembre.</p>
 
       <label class="titulo" for="nombre">Nombre y apellido</label>
       <input type="text" id="nombre" autocomplete="name" required>
@@ -103,29 +103,15 @@
         <label><input type="radio" name="asiste" value="No"><span>No puedo</span></label>
       </div>
 
+      <div id="bloqueDni">
+        <label class="titulo" for="dni">DNI</label>
+        <input type="text" id="dni" inputmode="numeric" autocomplete="off" placeholder="Sin puntos ni espacios" maxlength="10">
+      </div>
+
       <label class="titulo">¿Sos empleado/a de Grupo Agroenergía?</label>
       <div class="opciones">
         <label><input type="radio" name="empleado" value="Sí"><span>Sí</span></label>
         <label><input type="radio" name="empleado" value="No"><span>No</span></label>
-      </div>
-
-      <div id="bloqueSector">
-        <label class="titulo" for="sector">¿En qué estación o sector trabajás?</label>
-        <select id="sector">
-          <option value="">Elegí una opción</option>
-          <option value="Puma Energy">Puma Energy</option>
-          <option value="Axion Energy">Axion Energy</option>
-          <option value="Shell">Shell</option>
-          <option value="Barón Agroenergía">Barón Agroenergía</option>
-          <option value="Caleufú Agroenergía">Caleufú Agroenergía</option>
-          <option value="Trenel Agroenergía">Trenel Agroenergía</option>
-          <option value="Logística">Logística</option>
-          <option value="Administración">Administración</option>
-          <option value="Havanna">Havanna</option>
-          <option value="Spot">Spot</option>
-          <option value="Shell Select">Shell Select</option>
-          <option value="Mantenimiento">Mantenimiento</option>
-        </select>
       </div>
 
       <label class="titulo" for="restriccion">¿Tenés alguna restricción alimentaria?</label>
@@ -162,15 +148,15 @@
     const restriccion = document.getElementById('restriccion');
     const bloqueDetalle = document.getElementById('bloqueDetalle');
 
+    const bloqueDni = document.getElementById('bloqueDni');
+    const dniInput = document.getElementById('dni');
     radios.forEach(r => r.addEventListener('change', () => {
       radios.forEach(x => x.parentElement.classList.toggle('activa', x.checked));
+      bloqueDni.style.display = document.querySelector('input[name=asiste]:checked').value === 'Sí' ? 'block' : 'none';
     }));
     const radiosEmp = document.querySelectorAll('input[name=empleado]');
-    const bloqueSector = document.getElementById('bloqueSector');
-    const sector = document.getElementById('sector');
     radiosEmp.forEach(r => r.addEventListener('change', () => {
       radiosEmp.forEach(x => x.parentElement.classList.toggle('activa', x.checked));
-      bloqueSector.style.display = document.querySelector('input[name=empleado]:checked').value === 'Sí' ? 'block' : 'none';
     }));
 
     restriccion.addEventListener('change', () => {
@@ -203,12 +189,13 @@
       if (!marcado) { error.textContent = 'Indicá si vas a asistir.'; return; }
       const emp = document.querySelector('input[name=empleado]:checked');
       if (!emp) { error.textContent = 'Indicá si sos empleado/a.'; return; }
-      if (emp.value === 'Sí' && !sector.value) { error.textContent = 'Elegí tu estación o sector.'; return; }
+      const dni = dniInput.value.replace(/\D/g, '');
+      if (marcado.value === 'Sí' && (dni.length < 7 || dni.length > 8)) { error.textContent = 'Ingresá tu DNI (7 u 8 números).'; return; }
       if (marcado.value === 'Sí' && restriccion.value === 'Otra' && !detalle) {
         error.textContent = 'Contanos cuál es tu restricción.'; return;
       }
 
-      const datos = { nombre: nombre, asiste: marcado.value, restriccion: restriccion.value, detalle: detalle, empleado: emp.value, sector: emp.value === 'Sí' ? sector.value : '' };
+      const datos = { nombre: nombre, asiste: marcado.value, restriccion: restriccion.value, detalle: detalle, empleado: emp.value, dni: marcado.value === 'Sí' ? dni : '' };
 
       boton.disabled = true;
       boton.textContent = 'Enviando…';

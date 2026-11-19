@@ -36,7 +36,9 @@
   .cat-tit { font-family: Anton, sans-serif; font-size: 22px; letter-spacing: .5px; text-transform: uppercase; }
   .cat-desc { color: var(--gris); font-size: 14px; margin: 2px 0 10px; }
   input[type=text] { width:100%; font: 16px Inter, sans-serif; padding: 13px 14px; border: 2px solid #cfc8b8; border-radius: 10px; background: #fbf9f4; }
-  input[type=text]:focus { outline: none; border-color: var(--verde); background:#fff; }
+  input[type=text]:focus, textarea:focus { outline: none; border-color: var(--verde); background:#fff; }
+  textarea { width:100%; font: 15px Inter, sans-serif; padding: 11px 14px; border: 2px solid #cfc8b8; border-radius: 10px; background: #fbf9f4; margin-top: 8px; resize: vertical; min-height: 64px; }
+  .opc { font-size: 12px; color: var(--gris); margin-top: 4px; }
   .nota { font-size: 13px; color: var(--gris); margin: 4px 0 16px; }
   .btn { width:100%; border:0; border-radius: 12px; padding: 16px; background: var(--verde); color: var(--negro); font: 400 22px Anton, sans-serif; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; }
   .btn[disabled] { opacity:.55; cursor: default; }
@@ -77,16 +79,22 @@
         <div class="cat-tit">⛽ Tanque Lleno</div>
         <div class="cat-desc">El de mejor humor, aunque sea lunes a las 6 AM.</div>
         <input type="text" id="tanque" autocomplete="off" placeholder="Nombre y apellido">
+        <textarea id="tanqueMotivo" maxlength="400" placeholder="¿Por qué? Contanos una anécdota o un momento que lo pinte"></textarea>
+        <div class="opc">Opcional, pero nos ayuda a contar su historia en la fiesta.</div>
       </div>
       <div class="cat">
         <div class="cat-tit">🤝 Copiloto del Año</div>
         <div class="cat-desc">El mejor compañero, el que siempre da una mano.</div>
         <input type="text" id="copiloto" autocomplete="off" placeholder="Nombre y apellido">
+        <textarea id="copilotoMotivo" maxlength="400" placeholder="¿Por qué? Contanos una anécdota o un momento que lo pinte"></textarea>
+        <div class="opc">Opcional, pero nos ayuda a contar su historia en la fiesta.</div>
       </div>
       <div class="cat" id="catRescate">
         <div class="cat-tit">🚨 Rescate en Ruta</div>
         <div class="cat-desc">El que salvó un turno o resolvió lo imposible.</div>
         <input type="text" id="rescate" autocomplete="off" placeholder="Nombre y apellido">
+        <textarea id="rescateMotivo" maxlength="400" placeholder="¿Por qué? Contanos una anécdota o un momento que lo pinte"></textarea>
+        <div class="opc">Opcional, pero nos ayuda a contar su historia en la fiesta.</div>
       </div>
 
       <p class="error" id="error"></p>
@@ -159,11 +167,14 @@
       sucursal: sucursal,
       tanque: document.getElementById('tanque').value,
       copiloto: document.getElementById('copiloto').value,
-      rescate: document.getElementById('rescate').value
+      rescate: document.getElementById('rescate').value,
+      tanqueMotivo: document.getElementById('tanqueMotivo').value,
+      copilotoMotivo: document.getElementById('copilotoMotivo').value,
+      rescateMotivo: document.getElementById('rescateMotivo').value
     };
     var err = document.getElementById('error');
     var sinRescate = SIN_RESCATE.indexOf(sucursal) !== -1;
-    if (sinRescate) v.rescate = '';
+    if (sinRescate) { v.rescate = ''; v.rescateMotivo = ''; }
     var obligatorios = sinRescate ? [v.tanque, v.copiloto] : [v.tanque, v.copiloto, v.rescate];
     if (obligatorios.some(function (x) { return x.trim().length < 2; })) {
       err.textContent = 'Completá todas las categorías antes de enviar.';

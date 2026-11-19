@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Revelación del Año · Premios Octanaje 2026</title>
+<meta property="og:title" content="Revelación del Año · Tocá acá para proponer">
+<meta property="og:description" content="Solo para encargados: proponé al colaborador de tu sucursal que más se destacó en el año.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/premios/revelacion/">
+<meta property="og:image" content="https://marketinggrupoagroenergia-max.github.io/fiesta-2026/premios/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --negro:#353334; --crema:#EDE6D6; --verde:#38BD02; --gris:#111111; --linea:#e3ddd0; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background: #fff; }
+  body { font-family: Inter, system-ui, sans-serif; color: #111; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; }
+  .hero { background: #fff; color: var(--negro); padding: 30px 22px 30px; text-align: center; position: relative; overflow: hidden; }
+  .hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:8px;
+    background: repeating-linear-gradient(-45deg, var(--verde) 0 14px, var(--negro) 14px 28px); }
+  .kicker { font-family: Anton, sans-serif; letter-spacing: 3px; font-size: 13px; color: #111; }
+  h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: 52px; line-height: .95; margin: 8px 0 6px; letter-spacing: 1px; text-transform: uppercase; }
+  .sub { font-size: 14px; color: var(--gris); margin-top: 6px; }
+  .logo-premios { width: 100%; max-width: 340px; height: auto; display: block; margin: 0 auto 16px; }
+  .logo { background:#fff; padding: 14px 22px; text-align:center; border-bottom: 1px solid #e6e6e6; }
+  .logo img { height: 34px; width: auto; display:inline-block; }
+  main { padding: 22px 20px 32px; }
+  .paso { font-family: Anton, sans-serif; letter-spacing: 3px; font-size: 13px; color: var(--gris); margin-bottom: 4px; }
+  h2 { font-size: 20px; margin: 0 0 14px; }
+  .grilla { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .suc { border: 2px solid var(--verde); background:#fff; border-radius: 12px; padding: 14px 10px; font: 600 15px Inter, sans-serif; color: #111; cursor:pointer; text-align:center; }
+  .suc:active { transform: scale(.98); }
+  .suc.full { grid-column: 1 / -1; }
+  .elegida { display:flex; justify-content: space-between; align-items:center; background: var(--negro); color: var(--crema); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; font-weight:600; }
+  .elegida button { background:none; border:0; color: var(--verde); font: 600 14px Inter, sans-serif; cursor:pointer; }
+  .cat { background:#fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 2px solid var(--verde); }
+  .cat-tit { font-family: Anton, sans-serif; font-size: 22px; letter-spacing: .5px; text-transform: uppercase; }
+  .cat-desc { color: var(--gris); font-size: 14px; margin: 2px 0 10px; }
+  input[type=text] { width:100%; font: 16px Inter, sans-serif; padding: 13px 14px; border: 2px solid var(--verde); border-radius: 10px; background: #f7f7f7; }
+  input[type=text]:focus, textarea:focus { outline: none; border-color: var(--verde); background:#fff; }
+  textarea { width:100%; font: 15px Inter, sans-serif; padding: 11px 14px; border: 2px solid var(--verde); border-radius: 10px; background: #f7f7f7; margin-top: 8px; resize: vertical; min-height: 64px; }
+  .opc { font-size: 12px; color: var(--gris); margin-top: 4px; }
+  .nota { font-size: 13px; color: var(--gris); margin: 4px 0 16px; }
+  .btn { width:100%; border:0; border-radius: 12px; padding: 16px; background: var(--verde); color: var(--negro); font: 400 22px Anton, sans-serif; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; }
+  .btn[disabled] { opacity:.55; cursor: default; }
+  .error { color: #b3261e; font-size: 14px; margin: 0 0 12px; min-height: 1px; }
+  .final { text-align:center; padding: 18px 6px 10px; }
+  .final .big { font-family: Anton, sans-serif; font-size: 40px; text-transform: uppercase; line-height: 1; margin: 6px 0 10px; }
+  .final p { color: var(--gris); font-size: 15px; margin: 6px 0; }
+  .emoji { font-size: 44px; }
+  footer { text-align:center; font-size: 12px; color: var(--gris); padding: 0 20px 28px; }
+  .oculto { display:none; }
+  .intro { font-size: 15px; line-height: 1.45; margin: 0 0 12px; }
+  .lbl { display:block; font-weight: 600; font-size: 14px; margin: 12px 0 6px; }
+  .lbl:first-of-type { margin-top: 6px; }
+  .opc-inline { font-weight: 400; }
+  select { width:100%; font: 16px Inter, sans-serif; padding: 13px 14px; border: 2px solid var(--verde); border-radius: 10px; background: #f7f7f7; color:#111; }
+  select:focus { outline: none; background:#fff; }
+  #motivo { min-height: 110px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <img class="logo-premios" src="data:image/png;base64,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" alt="Premios Octanaje">
+    <div class="kicker">EDICIÓN 2026 · FIESTA 12.12</div>
+    <div class="sub">Propuesta de encargados · Revelación del Año</div>
+  </section>
+  <div class="logo"><img src="data:image/png;base64,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" alt="Grupo Agroenergía"></div>
+
+  <main>
+    <!-- Formulario -->
+    <section id="p1">
+      <div class="paso">SOLO PARA ENCARGADOS</div>
+      <h2>Revelación del Año</h2>
+      <p class="intro">Proponé a <b>un colaborador de tu sucursal</b> que se haya destacado durante el año y contanos brevemente por qué.</p>
+      <p class="intro">Cada encargado propone a una persona. Después, Gerencia junto con RRHH (Lucas Seisdedos, Joaquín Otero y Devora Puhl) analiza cada caso y elige al <b>Revelación del Año de toda la empresa</b>.</p>
+
+      <div class="cat">
+        <div class="cat-tit">Tus datos</div>
+        <label class="lbl" for="sucursal">Sucursal</label>
+        <select id="sucursal"><option value="">Elegí tu sucursal</option></select>
+        <label class="lbl" for="encargado">Tu nombre y apellido</label>
+        <input type="text" id="encargado" autocomplete="off" placeholder="Nombre y apellido del encargado">
+      </div>
+
+      <div class="cat">
+        <div class="cat-tit">🌟 Tu propuesta</div>
+        <label class="lbl" for="propuesto">Colaborador que proponés</label>
+        <input type="text" id="propuesto" autocomplete="off" placeholder="Nombre y apellido">
+        <label class="lbl" for="puesto">Puesto o sector <span class="opc-inline">(opcional)</span></label>
+        <input type="text" id="puesto" autocomplete="off" placeholder="Ej.: playero, tienda, administración">
+        <label class="lbl" for="motivo">¿Por qué se destacó este año?</label>
+        <textarea id="motivo" maxlength="1000" placeholder="Contanos qué hizo, cómo creció o algún momento que lo pinte"></textarea>
+        <div class="opc">Unas líneas alcanzan. Este texto es el que va a leer Gerencia y RRHH.</div>
+      </div>
+
+      <p class="error" id="error"></p>
+      <button class="btn" id="enviar" type="button" onclick="enviar()">Enviar propuesta</button>
+    </section>
+
+    <!-- Gracias -->
+    <section id="p3" class="oculto final">
+      <div class="emoji">🌟</div>
+      <div class="big">¡Propuesta enviada!</div>
+      <p>Gracias por proponer a alguien de tu equipo.</p>
+      <p>Si necesitás cambiarla, volvé a completar el formulario con tu mismo nombre y sucursal: queda la última que mandes.</p>
+    </section>
+
+    <section id="pCerrada" class="oculto final">
+      <div class="emoji">🔒</div>
+      <div class="big">Propuestas cerradas</div>
+      <p>El Revelación del Año se anuncia en la fiesta del sábado 12 de diciembre.</p>
+    </section>
+  </main>
+  <footer>Grupo Agroenergía · Fiesta de Fin de Año 2026</footer>
+</div>
+
+<script>
+  var ABIERTA = true;
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxLm7ZPoUQISv5zBAFSYbvuqG3pnwLIOLBc13Hab-pRKMG0UcIAI_qlK-DOSdSobpiJsQ/exec';
+  var SUCURSALES = ["Puma Energy y Havanna", "Axion Energy y Spot", "Shell y Select", "Trenel Agroenergía", "Caleufú Agroenergía", "Baron Agroenergía", "Administración Central"];
+
+  function mostrar(id) {
+    ['p1','p3','pCerrada'].forEach(function (s) {
+      document.getElementById(s).classList.toggle('oculto', s !== id);
+    });
+    window.scrollTo(0, 0);
+  }
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  function enviarDatos(v) {
+    var cuerpo = JSON.stringify(v);
+    return fetch(ENDPOINT, { method: 'POST', body: cuerpo })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.ok) { var e = new Error(j.error || 'No se pudo enviar.'); e.servidor = true; throw e; } })
+      .catch(function (e) {
+        if (e.servidor) throw e;
+        return fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: cuerpo });
+      });
+  }
+
+  function enviar() {
+    var v = {
+      tipo: 'revelacion',
+      sucursal: val('sucursal'),
+      encargado: val('encargado'),
+      propuesto: val('propuesto'),
+      puesto: val('puesto'),
+      motivo: val('motivo')
+    };
+    var err = document.getElementById('error');
+    if (!v.sucursal) { err.textContent = 'Elegí tu sucursal.'; return; }
+    if (v.encargado.length < 3) { err.textContent = 'Escribí tu nombre y apellido.'; return; }
+    if (v.propuesto.length < 3) { err.textContent = 'Escribí el nombre del colaborador que proponés.'; return; }
+    if (v.motivo.length < 15) { err.textContent = 'Contanos en unas líneas por qué lo proponés.'; return; }
+    err.textContent = '';
+    var b = document.getElementById('enviar');
+    b.disabled = true; b.textContent = 'Enviando…';
+    enviarDatos(v).then(function () { mostrar('p3'); })
+      .catch(function (e) {
+        b.disabled = false; b.textContent = 'Enviar propuesta';
+        err.textContent = (e && e.message) ? e.message : 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
+      });
+  }
+
+  (function iniciar() {
+    var sel = document.getElementById('sucursal');
+    SUCURSALES.forEach(function (s) {
+      var o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
+    });
+    if (!ABIERTA) mostrar('pCerrada');
+  })();
+</script>
+</body>
+</html>

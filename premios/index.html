@@ -9,15 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --negro:#353334; --crema:#EDE6D6; --verde:#38BD02; --gris:#6b6b6b; --linea:#e3ddd0; }
+  :root { --negro:#353334; --crema:#EDE6D6; --verde:#38BD02; --gris:#111111; --linea:#e3ddd0; }
   * { box-sizing: border-box; }
   html, body { margin:0; background: #fff; }
-  body { font-family: Inter, system-ui, sans-serif; color: var(--negro); -webkit-font-smoothing: antialiased; }
+  body { font-family: Inter, system-ui, sans-serif; color: #111; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; }
   .hero { background: #fff; color: var(--negro); padding: 30px 22px 30px; text-align: center; position: relative; overflow: hidden; }
   .hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:8px;
     background: repeating-linear-gradient(-45deg, var(--verde) 0 14px, var(--negro) 14px 28px); }
-  .kicker { font-family: Anton, sans-serif; letter-spacing: 3px; font-size: 13px; color: var(--negro); }
+  .kicker { font-family: Anton, sans-serif; letter-spacing: 3px; font-size: 13px; color: #111; }
   h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: 52px; line-height: .95; margin: 8px 0 6px; letter-spacing: 1px; text-transform: uppercase; }
   .sub { font-size: 14px; color: var(--gris); margin-top: 6px; }
   .logo-premios { width: 100%; max-width: 340px; height: auto; display: block; margin: 0 auto 16px; }
@@ -27,17 +27,17 @@
   .paso { font-family: Anton, sans-serif; letter-spacing: 3px; font-size: 13px; color: var(--gris); margin-bottom: 4px; }
   h2 { font-size: 20px; margin: 0 0 14px; }
   .grilla { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .suc { border: 2px solid var(--negro); background:#fff; border-radius: 12px; padding: 14px 10px; font: 600 15px Inter, sans-serif; color: var(--negro); cursor:pointer; text-align:center; }
+  .suc { border: 2px solid var(--verde); background:#fff; border-radius: 12px; padding: 14px 10px; font: 600 15px Inter, sans-serif; color: #111; cursor:pointer; text-align:center; }
   .suc:active { transform: scale(.98); }
   .suc.full { grid-column: 1 / -1; }
   .elegida { display:flex; justify-content: space-between; align-items:center; background: var(--negro); color: var(--crema); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; font-weight:600; }
   .elegida button { background:none; border:0; color: var(--verde); font: 600 14px Inter, sans-serif; cursor:pointer; }
-  .cat { background:#fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 1.5px solid #dcdcdc; }
+  .cat { background:#fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 2px solid var(--verde); }
   .cat-tit { font-family: Anton, sans-serif; font-size: 22px; letter-spacing: .5px; text-transform: uppercase; }
   .cat-desc { color: var(--gris); font-size: 14px; margin: 2px 0 10px; }
-  input[type=text] { width:100%; font: 16px Inter, sans-serif; padding: 13px 14px; border: 2px solid #d0d0d0; border-radius: 10px; background: #f7f7f7; }
+  input[type=text] { width:100%; font: 16px Inter, sans-serif; padding: 13px 14px; border: 2px solid var(--verde); border-radius: 10px; background: #f7f7f7; }
   input[type=text]:focus, textarea:focus { outline: none; border-color: var(--verde); background:#fff; }
-  textarea { width:100%; font: 15px Inter, sans-serif; padding: 11px 14px; border: 2px solid #d0d0d0; border-radius: 10px; background: #f7f7f7; margin-top: 8px; resize: vertical; min-height: 64px; }
+  textarea { width:100%; font: 15px Inter, sans-serif; padding: 11px 14px; border: 2px solid var(--verde); border-radius: 10px; background: #f7f7f7; margin-top: 8px; resize: vertical; min-height: 64px; }
   .opc { font-size: 12px; color: var(--gris); margin-top: 4px; }
   .nota { font-size: 13px; color: var(--gris); margin: 4px 0 16px; }
   .btn { width:100%; border:0; border-radius: 12px; padding: 16px; background: var(--verde); color: var(--negro); font: 400 22px Anton, sans-serif; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; }

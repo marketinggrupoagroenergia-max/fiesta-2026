@@ -82,7 +82,7 @@
         <div class="cat-desc">El mejor compañero, el que siempre da una mano.</div>
         <input type="text" id="copiloto" autocomplete="off" placeholder="Nombre y apellido">
       </div>
-      <div class="cat">
+      <div class="cat" id="catRescate">
         <div class="cat-tit">🚨 Rescate en Ruta</div>
         <div class="cat-desc">El que salvó un turno o resolvió lo imposible.</div>
         <input type="text" id="rescate" autocomplete="off" placeholder="Nombre y apellido">
@@ -118,7 +118,8 @@
 <script>
   var ABIERTA = true;
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxLm7ZPoUQISv5zBAFSYbvuqG3pnwLIOLBc13Hab-pRKMG0UcIAI_qlK-DOSdSobpiJsQ/exec';
-  var SUCURSALES = ["Servisur (Puma Santa Rosa y Havanna)", "Axion Santa Rosa", "Shell Catriló", "Trenel", "Caleufú", "Barón", "Administración Central"];
+  var SUCURSALES = ["Puma Energy y Havanna", "Axion Energy y Spot", "Shell y Select", "Trenel Agroenergía", "Caleufú Agroenergía", "Barón Agroenergía", "Administración Central"];
+  var SIN_RESCATE = ["Administración Central"];
   var sucursal = null;
   var CLAVE = 'premiosOctanaje2026_votado';
 
@@ -147,6 +148,7 @@
   function elegir(s) {
     sucursal = s;
     document.getElementById('sucElegida').textContent = s;
+    document.getElementById('catRescate').classList.toggle('oculto', SIN_RESCATE.indexOf(s) !== -1);
     mostrar('p2');
   }
   function volver() { mostrar('p1'); }
@@ -159,8 +161,11 @@
       rescate: document.getElementById('rescate').value
     };
     var err = document.getElementById('error');
-    if ([v.tanque, v.copiloto, v.rescate].some(function (x) { return x.trim().length < 2; })) {
-      err.textContent = 'Completá las 3 categorías antes de enviar.';
+    var sinRescate = SIN_RESCATE.indexOf(sucursal) !== -1;
+    if (sinRescate) v.rescate = '';
+    var obligatorios = sinRescate ? [v.tanque, v.copiloto] : [v.tanque, v.copiloto, v.rescate];
+    if (obligatorios.some(function (x) { return x.trim().length < 2; })) {
+      err.textContent = 'Completá todas las categorías antes de enviar.';
       return;
     }
     err.textContent = '';
